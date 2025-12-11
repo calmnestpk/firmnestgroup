@@ -4,105 +4,82 @@
   <meta charset="UTF-8" />
   <title>FirmNest Group</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Text-based favicon showing FG -->
+  <link rel="icon" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <rect width='100' height='100' fill='%230f172a'/>
+      <text x='50' y='62' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>FG</text>
+    </svg>
+  " />
+
   <style>
     :root {
-      --bg-gradient-start: #06b6d4;
-      --bg-gradient-end: #22c55e;
-      --card-bg: rgba(255, 255, 255, 0.96);
+      --bg-solid: #f4f6fb;
+      --card-bg: #ffffff;
       --text-main: #0f172a;
       --text-muted: #6b7280;
       --accent: #111827;
-      --border-soft: rgba(148, 163, 184, 0.4);
-      --shadow-soft: 0 28px 80px rgba(15, 23, 42, 0.22);
-      --radius-xl: 22px;
-    }
-
-    * {
-      box-sizing: border-box;
+      --border-soft: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0px 18px 50px rgba(15, 23, 42, 0.12);
+      --radius-xl: 20px;
     }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      min-height: 100vh;
-      background: radial-gradient(circle at top left, var(--bg-gradient-start), var(--bg-gradient-end));
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg-solid);
+      padding: 26px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 24px 16px;
+      align-items: flex-start;
       color: var(--text-main);
     }
 
     .shell {
       width: 100%;
       max-width: 980px;
-      background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.94),
-          rgba(248, 250, 252, 0.96)
-        );
+      background: var(--card-bg);
       border-radius: var(--radius-xl);
+      padding: 28px 32px;
       box-shadow: var(--shadow-soft);
-      padding: 26px 26px 30px;
       border: 1px solid var(--border-soft);
-      backdrop-filter: blur(16px);
-    }
-
-    @media (min-width: 900px) {
-      .shell {
-        padding: 32px 34px 34px;
-      }
     }
 
     .top {
       display: flex;
-      gap: 24px;
+      gap: 26px;
       align-items: center;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-      padding-bottom: 18px;
-      margin-bottom: 20px;
-    }
-
-    .top-logo {
-      flex-shrink: 0;
-      width: 210px;
-      max-width: 40%;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .top-logo img {
-      width: 100%;
-      height: auto;
-      display: block;
+      width: 210px;
       border-radius: 12px;
-    }
-
-    .top-text {
-      flex: 1;
-      min-width: 0;
     }
 
     .kicker {
       font-size: 11px;
-      letter-spacing: 0.19em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #4b5563;
-      margin-bottom: 6px;
+      color: var(--text-muted);
     }
 
     .title {
-      font-size: clamp(28px, 3.1vw, 32px);
+      font-size: 32px;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       color: var(--accent);
       margin-bottom: 4px;
     }
 
     .subline {
       font-size: 13px;
-      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: #6b7280;
+      letter-spacing: 0.32em;
+      color: var(--text-muted);
       margin-bottom: 12px;
     }
 
@@ -110,190 +87,151 @@
       font-size: 14px;
       line-height: 1.6;
       color: var(--text-muted);
-      max-width: 540px;
-    }
-
-    .lead strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    @media (max-width: 640px) {
-      .top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .top-logo {
-        width: 100%;
-      }
-      .lead {
-        max-width: 100%;
-      }
+      max-width: 520px;
     }
 
     .content-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 28px;
+      grid-template-columns: 1.4fr 1.3fr;
+      gap: 30px;
     }
 
     @media (max-width: 840px) {
       .content-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
     .block {
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      padding: 16px 18px 18px;
-      background: #f9fafb;
+      background: #fafafa;
+      border-radius: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--border-soft);
     }
 
     .block h2 {
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       font-size: 16px;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
       color: var(--accent);
     }
 
     .block p {
-      margin: 0 0 10px;
       font-size: 13px;
       line-height: 1.6;
       color: var(--text-muted);
+      margin-bottom: 12px;
     }
 
     .label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-
-    .email {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
+      color: #475569;
     }
 
     .email a {
-      color: inherit;
+      color: var(--accent);
+      font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.3);
-      padding-bottom: 1px;
+      border-bottom: 1px solid rgba(0,0,0,0.35);
     }
 
+    /* PRODUCT LOGO AREA IMPROVED (BIGGER SPACE) */
     .product-list {
       display: grid;
-      gap: 12px;
-      margin-top: 6px;
+      gap: 18px;
+      margin-top: 10px;
     }
 
     .product {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
       align-items: center;
-      padding: 10px;
-      border-radius: 12px;
-      background: white;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 14px 16px;
       border: 1px solid rgba(148, 163, 184, 0.5);
     }
 
     .product-logo {
-      width: 46px;
-      height: 46px;
+      width: 70px;
+      height: 70px;
       border-radius: 12px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #e2e8f0;
     }
 
     .product-logo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .product h3 {
-      margin: 0 0 2px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .product p {
-      margin: 0;
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.5;
+      margin: 0 0 4px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
     }
 
     .footer {
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.6);
+      margin-top: 22px;
       font-size: 11px;
-      color: #9ca3af;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    @media (max-width: 640px) {
-      .footer {
-        flex-direction: column;
-        gap: 6px;
-      }
+      color: #94a3b8;
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.6);
     }
   </style>
 </head>
 
 <body>
   <main class="shell">
+
     <!-- HEADER -->
     <section class="top">
       <div class="top-logo">
         <img src="firmnest-logo-temp.png" alt="FirmNest Group temporary logo" />
       </div>
-      <div class="top-text">
+
+      <div>
         <div class="kicker">FirmNest Group</div>
         <div class="title">Clarity. Confidence. Control.</div>
         <div class="subline">Operations • Finance • Structure</div>
 
         <p class="lead">
-          FirmNest Group works with founders who want order, precision and momentum.
-          We refine operations, clean up the numbers and design practical structures
-          the business can actually follow. It’s a calm, grown-up way of working –
-          built around <strong>clarity and disciplined execution</strong>.
+          FirmNest Group brings order to founder-led businesses.  
+          Clean numbers, structured operations and a calmer way of working — so decisions
+          come from clarity rather than chaos.
         </p>
       </div>
     </section>
 
-    <!-- MAIN GRID -->
+    <!-- GRID -->
     <section class="content-grid">
 
-      <!-- ABOUT + CONTACT -->
+      <!-- ABOUT -->
       <article class="block">
         <h2>Who We Are</h2>
         <p>
-          We support founder-led businesses that are moving fast and need their
-          internal world to catch up. No unnecessary noise, no complicated jargon –
-          just clear thinking and hands-on structure that actually makes the business run better.
-        </p>
-        <p>
-          From financial clean-ups to operational control, we sit beside the founder
-          and bring order where things feel messy or overwhelming.
+          We partner with owners moving quickly and needing internal systems that match
+          their ambition. No jargon. No clutter. Just disciplined structure and calm execution.
         </p>
 
-        <div style="margin-top: 14px;">
-          <div class="label">Enquiries</div>
-          <div class="email">
-            Contact us at
-            <a href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a>
-          </div>
+        <p>
+          Our work spans operational clean-ups, financial clarity, reporting, decision-support
+          and full back-office overhaul where needed.
+        </p>
+
+        <div class="label" style="margin-top: 14px;">Enquiries</div>
+        <div class="email">
+          <a href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a>
         </div>
       </article>
 
@@ -301,51 +239,42 @@
       <article class="block">
         <h2>Our Group Products</h2>
         <p>
-          A small family of tools and brands designed to bring stability,
-          insight and calm to both founders and teams.
+          A set of products and brands built to support calmer decisions, clearer insight
+          and stronger foundations.
         </p>
 
         <div class="product-list">
 
-          <!-- CALMNEST -->
+          <!-- CalmNest -->
           <div class="product">
             <div class="product-logo">
-              <img src="calmnest-logo.png" alt="CalmNest logo" />
+              <img src="calmnest-logo.png" />
             </div>
             <div>
               <h3>CalmNest</h3>
-              <p>
-                An AI-assisted companion for therapists, helping make sense of notes,
-                patterns and cases – without replacing the human relationship.
-              </p>
+              <p>AI-supported clarity for therapists — insights, structure and better case understanding.</p>
             </div>
           </div>
 
-          <!-- HEARD & FIGURED -->
+          <!-- Heard & Figured -->
           <div class="product">
             <div class="product-logo">
-              <img src="heard-and-figured-logo.png" alt="Heard & Figured logo" />
+              <img src="heard-and-figured-logo.png" />
             </div>
             <div>
               <h3>Heard &amp; Figured</h3>
-              <p>
-                Advisory support for founders who want narrative clarity and
-                disciplined financial structure behind their decisions.
-              </p>
+              <p>Founder advisory bringing together narrative, numbers and strategic support.</p>
             </div>
           </div>
 
-          <!-- FIRMNEST CORE -->
+          <!-- FirmNest Core -->
           <div class="product">
             <div class="product-logo">
-              <strong style="font-size: 18px; color: #0f172a;">FG</strong>
+              <span style="font-size: 26px; font-weight: 700; color:#0f172a;">FG</span>
             </div>
             <div>
               <h3>FirmNest Core</h3>
-              <p>
-                Operational and financial structuring for owner-managed businesses.
-                Clean numbers. Clean processes. Clean execution.
-              </p>
+              <p>Operational and financial discipline for owner-managed businesses.</p>
             </div>
           </div>
 
@@ -356,10 +285,8 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <span>FirmNest Group • London, United Kingdom</span>
-      <span>Clarity for founders. Calm for the organisation.</span>
+      FirmNest Group • London, United Kingdom
     </footer>
-
   </main>
 </body>
 </html>
