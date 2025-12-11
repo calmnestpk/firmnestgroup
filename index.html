@@ -5,68 +5,361 @@
   <title>FirmNest Group</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    :root {
+      --bg-gradient-start: #06b6d4;
+      --bg-gradient-end: #22c55e;
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --text-main: #0f172a;
+      --text-muted: #6b7280;
+      --accent: #111827;
+      --border-soft: rgba(148, 163, 184, 0.4);
+      --shadow-soft: 0 28px 80px rgba(15, 23, 42, 0.22);
+      --radius-xl: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f6fb;
-      color: #111827;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, var(--bg-gradient-start), var(--bg-gradient-end));
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      padding: 24px 16px;
+      color: var(--text-main);
     }
-    .card {
-      background: white;
-      padding: 32px 28px;
-      border-radius: 18px;
-      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
-      max-width: 480px;
-      width: 90%;
-      text-align: center;
+
+    .shell {
+      width: 100%;
+      max-width: 980px;
+      background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.94),
+          rgba(248, 250, 252, 0.96)
+        );
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 30px;
+      border: 1px solid var(--border-soft);
+      backdrop-filter: blur(16px);
     }
-    .logo-text {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+
+    @media (min-width: 900px) {
+      .shell {
+        padding: 32px 34px 34px;
+      }
     }
-    .tagline {
-      font-size: 15px;
-      color: #6b7280;
-      margin-bottom: 22px;
-    }
-    .pill {
-      display: inline-flex;
+
+    .top {
+      display: flex;
+      gap: 24px;
       align-items: center;
-      padding: 6px 14px;
-      border-radius: 999px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .top-logo {
+      flex-shrink: 0;
+      width: 210px;
+      max-width: 40%;
+    }
+
+    .top-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .top-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      color: #4b5563;
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: clamp(28px, 3.1vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .subline {
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 540px;
+    }
+
+    .lead strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-logo {
+        width: 100%;
+      }
+      .lead {
+        max-width: 100%;
+      }
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 840px) {
+      .content-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .block {
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 16px 18px 18px;
+      background: #f9fafb;
+    }
+
+    .block h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .block p {
+      margin: 0 0 10px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background: #e5edff;
-      color: #1d4ed8;
-      margin-bottom: 16px;
+      letter-spacing: 0.14em;
+      color: #6b7280;
+      margin-bottom: 4px;
     }
-    .note {
-      font-size: 13px;
+
+    .email {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .email a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.3);
+      padding-bottom: 1px;
+    }
+
+    .product-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .product-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product h3 {
+      margin: 0 0 2px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .product p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.6);
+      font-size: 11px;
       color: #9ca3af;
-      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 640px) {
+      .footer {
+        flex-direction: column;
+        gap: 6px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <div class="pill">FirmNest Group</div>
-    <div class="logo-text">Operations. Structure. Clarity.</div>
-    <p class="tagline">
-      Helping solo founders and SMEs fix messy back-office, processes, and numbers so they can actually grow.
-    </p>
-    <p class="note">
-      Full website coming soon. For now, reach us at:
-      <br />
-      <strong>info@firmnestgroup.co.uk</strong>
-    </p>
-  </div>
+  <main class="shell">
+    <!-- HEADER -->
+    <section class="top">
+      <div class="top-logo">
+        <img src="firmnest-logo-temp.png" alt="FirmNest Group temporary logo" />
+      </div>
+      <div class="top-text">
+        <div class="kicker">FirmNest Group</div>
+        <div class="title">Clarity. Confidence. Control.</div>
+        <div class="subline">Operations • Finance • Structure</div>
+
+        <p class="lead">
+          FirmNest Group works with founders who want order, precision and momentum.
+          We refine operations, clean up the numbers and design practical structures
+          the business can actually follow. It’s a calm, grown-up way of working –
+          built around <strong>clarity and disciplined execution</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- MAIN GRID -->
+    <section class="content-grid">
+
+      <!-- ABOUT + CONTACT -->
+      <article class="block">
+        <h2>Who We Are</h2>
+        <p>
+          We support founder-led businesses that are moving fast and need their
+          internal world to catch up. No unnecessary noise, no complicated jargon –
+          just clear thinking and hands-on structure that actually makes the business run better.
+        </p>
+        <p>
+          From financial clean-ups to operational control, we sit beside the founder
+          and bring order where things feel messy or overwhelming.
+        </p>
+
+        <div style="margin-top: 14px;">
+          <div class="label">Enquiries</div>
+          <div class="email">
+            Contact us at
+            <a href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCTS -->
+      <article class="block">
+        <h2>Our Group Products</h2>
+        <p>
+          A small family of tools and brands designed to bring stability,
+          insight and calm to both founders and teams.
+        </p>
+
+        <div class="product-list">
+
+          <!-- CALMNEST -->
+          <div class="product">
+            <div class="product-logo">
+              <img src="calmnest-logo.png" alt="CalmNest logo" />
+            </div>
+            <div>
+              <h3>CalmNest</h3>
+              <p>
+                An AI-assisted companion for therapists, helping make sense of notes,
+                patterns and cases – without replacing the human relationship.
+              </p>
+            </div>
+          </div>
+
+          <!-- HEARD & FIGURED -->
+          <div class="product">
+            <div class="product-logo">
+              <img src="heard-and-figured-logo.png" alt="Heard & Figured logo" />
+            </div>
+            <div>
+              <h3>Heard &amp; Figured</h3>
+              <p>
+                Advisory support for founders who want narrative clarity and
+                disciplined financial structure behind their decisions.
+              </p>
+            </div>
+          </div>
+
+          <!-- FIRMNEST CORE -->
+          <div class="product">
+            <div class="product-logo">
+              <strong style="font-size: 18px; color: #0f172a;">FG</strong>
+            </div>
+            <div>
+              <h3>FirmNest Core</h3>
+              <p>
+                Operational and financial structuring for owner-managed businesses.
+                Clean numbers. Clean processes. Clean execution.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span>FirmNest Group • London, United Kingdom</span>
+      <span>Clarity for founders. Calm for the organisation.</span>
+    </footer>
+
+  </main>
 </body>
 </html>
