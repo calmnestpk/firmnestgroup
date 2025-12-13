@@ -6,23 +6,24 @@
   <meta name="theme-color" content="#0b0f19" />
   <meta name="description" content="Firmnest Group — Clarity. Confidence. Control." />
 
-  <!-- Keep your existing FG tab icon setup (don’t change file names here if it’s already working) -->
-  <link rel="icon" href="favicon.ico" />
+  <!-- TAB ICON (FG) -->
+  <link rel="icon" type="image/png" href="fg-favicon.png" />
+  <link rel="apple-touch-icon" href="fg-favicon.png" />
 
   <title>Firmnest Group | Clarity. Confidence. Control.</title>
 
   <style>
     :root{
-      --bg: #0b0f19;
-      --bg2:#0e1424;
-      --text:#e9eefc;
-      --muted:#b8c2e6;
-      --line: rgba(255,255,255,.10);
-      --card:#0f172d;
-      --shadow: 0 16px 40px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius2: 14px;
-      --max: 1120px;
+      --bg:#0b0f19;
+      --bg2:#0f1730;
+      --text:#eef2ff;
+      --muted:#b7c0e6;
+      --line:rgba(255,255,255,.12);
+      --panel:rgba(255,255,255,.05);
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:14px;
+      --max:1200px;
     }
 
     *{ box-sizing:border-box; }
@@ -30,24 +31,26 @@
     body{
       margin:0;
       background:
-        radial-gradient(900px 500px at 15% 0%, rgba(77, 105, 255, .16), transparent 55%),
-        radial-gradient(700px 420px at 85% 10%, rgba(0, 200, 255, .10), transparent 55%),
+        radial-gradient(900px 520px at 12% 0%, rgba(77, 105, 255, .16), transparent 55%),
+        radial-gradient(700px 420px at 88% 12%, rgba(0, 200, 255, .10), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       line-height:1.35;
-      letter-spacing: .2px;
+      letter-spacing:.2px;
     }
 
     a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding: 28px 18px 60px; }
+    strong{ font-weight:900; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 26px 18px 52px; }
 
     header{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      padding: 10px 0 24px;
+      padding: 10px 0 22px;
     }
 
     .brand{
@@ -66,19 +69,16 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight:800;
-      letter-spacing:.5px;
+      font-weight:950;
+      letter-spacing:.6px;
       flex: 0 0 auto;
     }
 
-    .brandText{
-      min-width:0;
-    }
-
+    .brandText{ min-width:0; }
     .brandText .name{
-      font-weight: 850;
+      font-weight: 950;
       font-size: 15px;
-      letter-spacing: .6px;
+      letter-spacing: .7px;
       text-transform: uppercase;
       white-space:nowrap;
       overflow:hidden;
@@ -93,123 +93,88 @@
       text-overflow:ellipsis;
     }
 
-    .topRight{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex: 0 0 auto;
-    }
-
-    .pill{
+    .contactTop{
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      gap:10px;
       padding:10px 12px;
       background: rgba(255,255,255,.06);
       border:1px solid var(--line);
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 13px;
       box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      flex: 0 0 auto;
     }
-
-    .pill .dot{
+    .dot{
       width:8px; height:8px; border-radius:999px;
       background: rgba(140, 255, 200, .9);
       box-shadow: 0 0 0 6px rgba(140,255,200,.12);
+      flex:0 0 auto;
     }
 
+    /* LAYOUT: left wider, right smaller */
     main{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
+      grid-template-columns: 1.45fr .55fr;
+      gap:16px;
       align-items:start;
     }
 
     .panel{
-      background: rgba(255,255,255,.04);
+      background: var(--panel);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
 
+    /* LEFT */
     .hero{
-      padding: 26px 22px 22px;
+      padding: 28px 24px 20px;
     }
-
     h1{
       margin: 0 0 10px;
-      font-size: clamp(28px, 4.2vw, 44px);
-      line-height: 1.05;
-      letter-spacing: -0.6px;
-      font-weight: 900;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -0.7px;
+      font-weight: 950;
     }
-
     .subtitle{
       margin: 0 0 18px;
       color: var(--muted);
       font-size: 15px;
-      max-width: 60ch;
+      max-width: 62ch;
+      font-weight: 600;
     }
 
-    .bigTagline{
+    .chips{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin: 14px 0 18px;
+      margin: 16px 0 0;
     }
-
     .chip{
       padding: 10px 12px;
       border-radius: 999px;
       background: rgba(255,255,255,.06);
       border:1px solid var(--line);
-      font-weight: 800;
-      letter-spacing: .2px;
+      font-weight: 900;
       font-size: 13px;
+      letter-spacing: .2px;
     }
-
-    .ctaRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 16px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      font-weight: 850;
-      font-size: 14px;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      background: rgba(255,255,255,.06);
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
-    .btnPrimary{
-      background: rgba(77,105,255,.22);
-      border-color: rgba(77,105,255,.35);
-    }
-    .btnPrimary:hover{ background: rgba(77,105,255,.28); }
 
     .section{
-      padding: 18px 22px 22px;
+      padding: 18px 24px 22px;
       border-top: 1px solid var(--line);
     }
-
     .sectionTitle{
       margin: 0 0 10px;
-      font-size: 14px;
-      letter-spacing: .8px;
+      font-size: 13px;
+      letter-spacing: .9px;
       text-transform: uppercase;
-      font-weight: 900;
-      color: rgba(233,238,252,.9);
+      font-weight: 950;
+      color: rgba(238,242,255,.92);
     }
 
     .threeC{
@@ -218,15 +183,14 @@
       gap: 10px;
       margin-top: 12px;
     }
-
     .cCard{
       border: 1px solid var(--line);
       background: rgba(255,255,255,.04);
       border-radius: var(--radius2);
       padding: 14px 12px;
-      min-height: 92px;
+      min-height: 96px;
     }
-    .cCard .cHead{
+    .cHead{
       display:flex;
       align-items:baseline;
       gap:8px;
@@ -235,10 +199,10 @@
     .cLetter{
       font-weight: 950;
       font-size: 20px;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
     }
     .cWord{
-      font-weight: 900;
+      font-weight: 950;
       font-size: 14px;
       letter-spacing: .2px;
     }
@@ -246,86 +210,102 @@
       margin: 0;
       color: var(--muted);
       font-size: 13px;
+      font-weight: 650;
     }
 
-    /* Right column */
-    .logos{
-      padding: 18px;
-    }
-
-    .logosTitle{
-      margin: 4px 0 12px;
-      font-size: 14px;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      font-weight: 900;
-      color: rgba(233,238,252,.9);
-    }
-
-    .logoGrid{
+    .contactBlock{
       display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
+      gap:10px;
+      margin-top: 10px;
+      padding-top: 6px;
     }
+    .contactLine{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      color: rgba(238,242,255,.92);
+      font-weight: 750;
+      font-size: 14px;
+    }
+    .contactLine span{
+      color: rgba(183,192,230,.85);
+      font-weight: 700;
+    }
+    .contactLink{
+      display:inline-flex;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      font-weight: 900;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .contactLink:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); }
 
+    /* RIGHT (smaller) */
+    .brands{
+      padding: 16px 14px 18px;
+    }
+    .brandsTitle{
+      margin: 4px 0 10px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 950;
+      color: rgba(238,242,255,.9);
+    }
+    .brandStack{
+      display:grid;
+      gap:10px;
+    }
     .logoBox{
-      background: #ffffff;
-      border-radius: var(--radius2);
-      padding: 16px;
+      background:#ffffff;
+      border-radius: 14px;
+      padding: 14px;
       border: 1px solid rgba(0,0,0,.08);
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height: 108px;
+      min-height: 90px;
     }
-
     .logoBox img{
       max-width: 100%;
-      max-height: 80px;
+      max-height: 62px;
       object-fit: contain;
       display:block;
     }
 
-    .contact{
-      padding: 18px 18px 20px;
-      border-top: 1px solid var(--line);
-    }
-
-    form{
-      display:grid;
-      gap: 10px;
-    }
-
-    .fieldRow{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    input, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
+    .coreBox{
+      background: rgba(255,255,255,.04);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      outline:none;
-      font-size: 14px;
-      font-weight: 650;
+      border-radius: 14px;
+      padding: 18px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 90px;
     }
-    textarea{ min-height: 110px; resize: vertical; font-weight: 600; }
-
-    input::placeholder, textarea::placeholder{ color: rgba(184,194,230,.65); font-weight: 600; }
-
-    .fine{
-      margin: 10px 0 0;
-      color: rgba(184,194,230,.75);
-      font-size: 12px;
+    .coreMark{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      letter-spacing: .2px;
+    }
+    .coreMark .fg{
+      font-weight: 950;
+      font-size: 22px;
+    }
+    .coreMark .core{
+      font-weight: 500;
+      font-size: 16px;
+      color: rgba(183,192,230,.9);
     }
 
     footer{
-      margin-top: 18px;
-      color: rgba(184,194,230,.7);
+      margin-top: 16px;
+      color: rgba(183,192,230,.7);
       font-size: 12px;
       text-align:center;
     }
@@ -333,10 +313,10 @@
     /* Mobile */
     @media (max-width: 900px){
       main{ grid-template-columns: 1fr; }
-      header{ padding-bottom: 16px; }
       .threeC{ grid-template-columns: 1fr; }
-      .fieldRow{ grid-template-columns: 1fr; }
-      .wrap{ padding-bottom: 48px; }
+      .wrap{ padding-bottom: 44px; }
+      header{ padding-bottom: 14px; }
+      .contactTop{ display:none; } /* cleaner on mobile */
     }
   </style>
 </head>
@@ -352,44 +332,38 @@
         </div>
       </div>
 
-      <div class="topRight">
-        <a class="pill" href="mailto:connect@firmnestgroup.co.uk" aria-label="Email Firmnest Group">
-          <span class="dot" aria-hidden="true"></span>
-          connect@firmnestgroup.co.uk
-        </a>
-      </div>
+      <a class="contactTop" href="mailto:info@firmnestgroup.co.uk" aria-label="Email Firmnest Group">
+        <span class="dot" aria-hidden="true"></span>
+        info@firmnestgroup.co.uk
+      </a>
     </header>
 
     <main>
-      <!-- Left -->
+      <!-- LEFT (wider) -->
       <section class="panel">
         <div class="hero">
           <h1>Clarity. Confidence. Control.</h1>
           <p class="subtitle">
-            We help founders and SMEs run tighter operations, make cleaner decisions, and stay in control of the numbers that matter.
+            Practical support for founders and SMEs who want tighter execution and cleaner decision-making.
           </p>
 
-          <div class="bigTagline" aria-label="Key focus areas">
-            <span class="chip">Straight answers</span>
-            <span class="chip">Better decisions</span>
-            <span class="chip">Less noise</span>
-          </div>
-
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="#contact">Send a query</a>
-            <a class="btn" href="mailto:connect@firmnestgroup.co.uk?subject=Firmnest%20Group%20-%20Query">Email directly</a>
+          <div class="chips" aria-label="Key statements">
+            <span class="chip">No noise</span>
+            <span class="chip">No guesswork</span>
+            <span class="chip">Just outcomes</span>
           </div>
         </div>
 
         <div class="section">
           <div class="sectionTitle">Our 3 Cs</div>
+
           <div class="threeC">
             <div class="cCard">
               <div class="cHead">
                 <div class="cLetter">C</div>
                 <div class="cWord">Clarity</div>
               </div>
-              <p class="cBody">You see what’s happening, why it’s happening, and what to do next.</p>
+              <p class="cBody">Know what’s working, what’s not, and what to change.</p>
             </div>
 
             <div class="cCard">
@@ -397,7 +371,7 @@
                 <div class="cLetter">C</div>
                 <div class="cWord">Confidence</div>
               </div>
-              <p class="cBody">Decisions backed by data, not guesswork or gut feel.</p>
+              <p class="cBody">Move fast with decisions backed by numbers.</p>
             </div>
 
             <div class="cCard">
@@ -405,46 +379,47 @@
                 <div class="cLetter">C</div>
                 <div class="cWord">Control</div>
               </div>
-              <p class="cBody">Systems, cadence, and accountability that don’t fall apart.</p>
+              <p class="cBody">Build routines and systems that stay consistent.</p>
             </div>
           </div>
         </div>
 
-        <div id="contact" class="contact">
-          <div class="sectionTitle">Queries</div>
+        <div class="section">
+          <div class="sectionTitle">Contact</div>
 
-          <!-- Works without any backend: opens the user's email client with the content -->
-          <form action="mailto:connect@firmnestgroup.co.uk" method="post" enctype="text/plain">
-            <div class="fieldRow">
-              <input type="text" name="name" placeholder="Your name" required />
-              <input type="email" name="email" placeholder="Your email" required />
+          <div class="contactBlock">
+            <div class="contactLine">
+              <span>Email:</span>
+              <a class="contactLink" href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a>
             </div>
-            <textarea name="message" placeholder="Write your message" required></textarea>
-            <button class="btn btnPrimary" type="submit">Send</button>
-          </form>
 
-          <p class="fine">
-            Prefer email? <a href="mailto:connect@firmnestgroup.co.uk"><strong>connect@firmnestgroup.co.uk</strong></a>
-          </p>
+            <div class="contactLine">
+              <span>Based in:</span>
+              London, UK
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Right -->
+      <!-- RIGHT (smaller) -->
       <aside class="panel">
-        <div class="logos">
-          <div class="logosTitle">Group Brands</div>
+        <div class="brands">
+          <div class="brandsTitle">Group Brands</div>
 
-          <div class="logoGrid">
-            <div class="logoBox" title="Firmnest">
-              <img src="firmnest-logo.png" alt="Firmnest logo" />
+          <div class="brandStack">
+            <div class="logoBox" title="Calmnest">
+              <img src="calmnest-logo.png" alt="Calmnest logo" />
             </div>
 
             <div class="logoBox" title="Heard &amp; Figured">
               <img src="heard-figured-logo.png" alt="Heard & Figured logo" />
             </div>
 
-            <div class="logoBox" title="Calmnest">
-              <img src="calmnest-logo.png" alt="Calmnest logo" />
+            <div class="coreBox" title="Firmnest Core">
+              <div class="coreMark" aria-label="Firmnest Core">
+                <span class="fg">FG</span>
+                <span class="core">Core</span>
+              </div>
             </div>
           </div>
         </div>
