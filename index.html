@@ -1,292 +1,463 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FirmNest Group</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f19" />
+  <meta name="description" content="Firmnest Group — Clarity. Confidence. Control." />
 
-  <!-- Text-based favicon showing FG -->
-  <link rel="icon" href="data:image/svg+xml,
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-      <rect width='100' height='100' fill='%230f172a'/>
-      <text x='50' y='62' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>FG</text>
-    </svg>
-  " />
+  <!-- Keep your existing FG tab icon setup (don’t change file names here if it’s already working) -->
+  <link rel="icon" href="favicon.ico" />
+
+  <title>Firmnest Group | Clarity. Confidence. Control.</title>
 
   <style>
-    :root {
-      --bg-solid: #f4f6fb;
-      --card-bg: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #6b7280;
-      --accent: #111827;
-      --border-soft: rgba(148, 163, 184, 0.35);
-      --shadow-soft: 0px 18px 50px rgba(15, 23, 42, 0.12);
-      --radius-xl: 20px;
+    :root{
+      --bg: #0b0f19;
+      --bg2:#0e1424;
+      --text:#e9eefc;
+      --muted:#b8c2e6;
+      --line: rgba(255,255,255,.10);
+      --card:#0f172d;
+      --shadow: 0 16px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1120px;
     }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: var(--bg-solid);
-      padding: 26px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      color: var(--text-main);
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 500px at 15% 0%, rgba(77, 105, 255, .16), transparent 55%),
+        radial-gradient(700px 420px at 85% 10%, rgba(0, 200, 255, .10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.35;
+      letter-spacing: .2px;
     }
 
-    .shell {
-      width: 100%;
-      max-width: 980px;
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      padding: 28px 32px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-soft);
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 28px 18px 60px; }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 0 24px;
     }
 
-    .top {
-      display: flex;
-      gap: 26px;
-      align-items: center;
-      border-bottom: 1px solid var(--border-soft);
-      padding-bottom: 20px;
-      margin-bottom: 24px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
     }
 
-    .top-logo img {
-      width: 210px;
-      border-radius: 12px;
+    .brandMark{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      letter-spacing:.5px;
+      flex: 0 0 auto;
     }
 
-    .kicker {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+    .brandText{
+      min-width:0;
     }
 
-    .title {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .subline {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.32em;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .lead {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 520px;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1.3fr;
-      gap: 30px;
-    }
-
-    @media (max-width: 840px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .block {
-      background: #fafafa;
-      border-radius: 16px;
-      padding: 18px 20px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .block h2 {
-      margin: 0 0 12px;
-      font-size: 16px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .block p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #475569;
-    }
-
-    .email a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0,0,0,0.35);
-    }
-
-    /* PRODUCT LOGO AREA IMPROVED (BIGGER SPACE) */
-    .product-list {
-      display: grid;
-      gap: 18px;
-      margin-top: 10px;
-    }
-
-    .product {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 18px;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 14px 16px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-    }
-
-    .product-logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #e2e8f0;
-    }
-
-    .product-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .product h3 {
-      margin: 0 0 4px;
+    .brandText .name{
+      font-weight: 850;
       font-size: 15px;
-      font-weight: 700;
-      color: var(--accent);
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brandText .tag{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .footer {
-      margin-top: 22px;
-      font-size: 11px;
-      color: #94a3b8;
-      text-align: center;
-      padding-top: 16px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.6);
+    .topRight{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex: 0 0 auto;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .pill .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(140, 255, 200, .9);
+      box-shadow: 0 0 0 6px rgba(140,255,200,.12);
+    }
+
+    main{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding: 26px 22px 22px;
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+      font-weight: 900;
+    }
+
+    .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 60ch;
+    }
+
+    .bigTagline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 14px 0 18px;
+    }
+
+    .chip{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      font-weight: 800;
+      letter-spacing: .2px;
+      font-size: 13px;
+    }
+
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      font-weight: 850;
+      font-size: 14px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      background: rgba(255,255,255,.06);
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .btnPrimary{
+      background: rgba(77,105,255,.22);
+      border-color: rgba(77,105,255,.35);
+    }
+    .btnPrimary:hover{ background: rgba(77,105,255,.28); }
+
+    .section{
+      padding: 18px 22px 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .sectionTitle{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: rgba(233,238,252,.9);
+    }
+
+    .threeC{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .cCard{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius2);
+      padding: 14px 12px;
+      min-height: 92px;
+    }
+    .cCard .cHead{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      margin: 0 0 8px;
+    }
+    .cLetter{
+      font-weight: 950;
+      font-size: 20px;
+      letter-spacing: -0.4px;
+    }
+    .cWord{
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+    .cBody{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Right column */
+    .logos{
+      padding: 18px;
+    }
+
+    .logosTitle{
+      margin: 4px 0 12px;
+      font-size: 14px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: rgba(233,238,252,.9);
+    }
+
+    .logoGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .logoBox{
+      background: #ffffff;
+      border-radius: var(--radius2);
+      padding: 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 108px;
+    }
+
+    .logoBox img{
+      max-width: 100%;
+      max-height: 80px;
+      object-fit: contain;
+      display:block;
+    }
+
+    .contact{
+      padding: 18px 18px 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    form{
+      display:grid;
+      gap: 10px;
+    }
+
+    .fieldRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      outline:none;
+      font-size: 14px;
+      font-weight: 650;
+    }
+    textarea{ min-height: 110px; resize: vertical; font-weight: 600; }
+
+    input::placeholder, textarea::placeholder{ color: rgba(184,194,230,.65); font-weight: 600; }
+
+    .fine{
+      margin: 10px 0 0;
+      color: rgba(184,194,230,.75);
+      font-size: 12px;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: rgba(184,194,230,.7);
+      font-size: 12px;
+      text-align:center;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px){
+      main{ grid-template-columns: 1fr; }
+      header{ padding-bottom: 16px; }
+      .threeC{ grid-template-columns: 1fr; }
+      .fieldRow{ grid-template-columns: 1fr; }
+      .wrap{ padding-bottom: 48px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="shell">
-
-    <!-- HEADER -->
-    <section class="top">
-      <div class="top-logo">
-        <img src="firmnest-logo-temp.png" alt="FirmNest Group temporary logo" />
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brandMark" aria-hidden="true">FG</div>
+        <div class="brandText">
+          <div class="name">Firmnest Group</div>
+          <div class="tag">Clarity. Confidence. Control.</div>
+        </div>
       </div>
 
-      <div>
-        <div class="kicker">FirmNest Group</div>
-        <div class="title">Clarity. Confidence. Control.</div>
-        <div class="subline">Operations • Finance • Structure</div>
-
-        <p class="lead">
-          FirmNest Group brings order to founder-led businesses.  
-          Clean numbers, structured operations and a calmer way of working — so decisions
-          come from clarity rather than chaos.
-        </p>
+      <div class="topRight">
+        <a class="pill" href="mailto:connect@firmnestgroup.co.uk" aria-label="Email Firmnest Group">
+          <span class="dot" aria-hidden="true"></span>
+          connect@firmnestgroup.co.uk
+        </a>
       </div>
-    </section>
+    </header>
 
-    <!-- GRID -->
-    <section class="content-grid">
+    <main>
+      <!-- Left -->
+      <section class="panel">
+        <div class="hero">
+          <h1>Clarity. Confidence. Control.</h1>
+          <p class="subtitle">
+            We help founders and SMEs run tighter operations, make cleaner decisions, and stay in control of the numbers that matter.
+          </p>
 
-      <!-- ABOUT -->
-      <article class="block">
-        <h2>Who We Are</h2>
-        <p>
-          We partner with owners moving quickly and needing internal systems that match
-          their ambition. No jargon. No clutter. Just disciplined structure and calm execution.
-        </p>
+          <div class="bigTagline" aria-label="Key focus areas">
+            <span class="chip">Straight answers</span>
+            <span class="chip">Better decisions</span>
+            <span class="chip">Less noise</span>
+          </div>
 
-        <p>
-          Our work spans operational clean-ups, financial clarity, reporting, decision-support
-          and full back-office overhaul where needed.
-        </p>
-
-        <div class="label" style="margin-top: 14px;">Enquiries</div>
-        <div class="email">
-          <a href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a>
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="#contact">Send a query</a>
+            <a class="btn" href="mailto:connect@firmnestgroup.co.uk?subject=Firmnest%20Group%20-%20Query">Email directly</a>
+          </div>
         </div>
-      </article>
 
-      <!-- PRODUCTS -->
-      <article class="block">
-        <h2>Our Group Products</h2>
-        <p>
-          A set of products and brands built to support calmer decisions, clearer insight
-          and stronger foundations.
-        </p>
-
-        <div class="product-list">
-
-          <!-- CalmNest -->
-          <div class="product">
-            <div class="product-logo">
-              <img src="calmnest-logo.png" />
+        <div class="section">
+          <div class="sectionTitle">Our 3 Cs</div>
+          <div class="threeC">
+            <div class="cCard">
+              <div class="cHead">
+                <div class="cLetter">C</div>
+                <div class="cWord">Clarity</div>
+              </div>
+              <p class="cBody">You see what’s happening, why it’s happening, and what to do next.</p>
             </div>
-            <div>
-              <h3>CalmNest</h3>
-              <p>AI-supported clarity for therapists — insights, structure and better case understanding.</p>
-            </div>
-          </div>
 
-          <!-- Heard & Figured -->
-          <div class="product">
-            <div class="product-logo">
-              <img src="heard-and-figured-logo.png" />
+            <div class="cCard">
+              <div class="cHead">
+                <div class="cLetter">C</div>
+                <div class="cWord">Confidence</div>
+              </div>
+              <p class="cBody">Decisions backed by data, not guesswork or gut feel.</p>
             </div>
-            <div>
-              <h3>Heard &amp; Figured</h3>
-              <p>Founder advisory bringing together narrative, numbers and strategic support.</p>
+
+            <div class="cCard">
+              <div class="cHead">
+                <div class="cLetter">C</div>
+                <div class="cWord">Control</div>
+              </div>
+              <p class="cBody">Systems, cadence, and accountability that don’t fall apart.</p>
             </div>
           </div>
-
-          <!-- FirmNest Core -->
-          <div class="product">
-            <div class="product-logo">
-              <span style="font-size: 26px; font-weight: 700; color:#0f172a;">FG</span>
-            </div>
-            <div>
-              <h3>FirmNest Core</h3>
-              <p>Operational and financial discipline for owner-managed businesses.</p>
-            </div>
-          </div>
-
         </div>
-      </article>
 
-    </section>
+        <div id="contact" class="contact">
+          <div class="sectionTitle">Queries</div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      FirmNest Group • London, United Kingdom
+          <!-- Works without any backend: opens the user's email client with the content -->
+          <form action="mailto:connect@firmnestgroup.co.uk" method="post" enctype="text/plain">
+            <div class="fieldRow">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="email" name="email" placeholder="Your email" required />
+            </div>
+            <textarea name="message" placeholder="Write your message" required></textarea>
+            <button class="btn btnPrimary" type="submit">Send</button>
+          </form>
+
+          <p class="fine">
+            Prefer email? <a href="mailto:connect@firmnestgroup.co.uk"><strong>connect@firmnestgroup.co.uk</strong></a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Right -->
+      <aside class="panel">
+        <div class="logos">
+          <div class="logosTitle">Group Brands</div>
+
+          <div class="logoGrid">
+            <div class="logoBox" title="Firmnest">
+              <img src="firmnest-logo.png" alt="Firmnest logo" />
+            </div>
+
+            <div class="logoBox" title="Heard &amp; Figured">
+              <img src="heard-figured-logo.png" alt="Heard & Figured logo" />
+            </div>
+
+            <div class="logoBox" title="Calmnest">
+              <img src="calmnest-logo.png" alt="Calmnest logo" />
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Firmnest Group. All rights reserved.
     </footer>
-  </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
