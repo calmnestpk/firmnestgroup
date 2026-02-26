@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>FirmNest Group — AI-Powered Finance & Operations Advisory</title>
   <meta name="description" content="FirmNest Group brings AI-powered finance and operations advisory to founder-led and growth-stage businesses." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -17,276 +21,896 @@
       --border: #E4E4DF; --border-dark: #CACAC2;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--navy); font-family: 'Figtree', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 66px; background: rgba(248,248,246,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: box-shadow .3s; }
+    body {
+      background: var(--bg);
+      color: var(--navy);
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* A11y focus */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 66px;
+      background: rgba(248,248,246,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s;
+    }
     nav.scrolled { box-shadow: 0 2px 16px rgba(15,31,61,.07); }
+
     .nav-logo img { height: 34px; display: block; object-fit: contain; }
+
     .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: var(--slate); text-decoration: none; transition: color .2s; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color .2s;
+    }
     .nav-links a:hover { color: var(--navy); }
-    .nav-cta { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-decoration: none; color: var(--white); background: var(--navy); padding: 9px 22px; transition: background .2s; }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--navy);
+      padding: 9px 22px;
+      transition: background .2s;
+    }
     .nav-cta:hover { background: var(--navy-hover); }
-    section { padding: 72px 60px; }
-    .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
-    h2 { font-family: 'Instrument Serif', serif; font-size: clamp(30px, 3.5vw, 44px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 14px; letter-spacing: -.01em; }
+
+    /* Sections */
+    section { padding: 72px 60px; scroll-margin-top: 90px; }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--navy);
+      margin-bottom: 14px;
+      letter-spacing: -.01em;
+    }
     h2 em { font-style: italic; color: var(--blue); }
-    .lead { font-size: 15px; color: var(--slate); max-width: 520px; line-height: 1.8; font-weight: 300; }
-    #hero { min-height: 88vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-top: 110px; padding-bottom: 0; background: var(--white); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-    #hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, #E0E0DA 1px, transparent 1px); background-size: 28px 28px; opacity: .5; pointer-events: none; }
+    .lead {
+      font-size: 15px;
+      color: var(--slate);
+      max-width: 520px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* Hero */
+    #hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 110px;
+      padding-bottom: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #E0E0DA 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .5;
+      pointer-events: none;
+    }
     .hero-inner { position: relative; z-index: 1; max-width: 740px; padding: 0 60px; }
-    .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); border: 1px solid rgba(35,82,200,.2); background: var(--blue-light); padding: 7px 16px; margin-bottom: 26px; }
-    .hero-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); animation: blink 2.5s ease-in-out infinite; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(35,82,200,.2);
+      background: var(--blue-light);
+      padding: 7px 16px;
+      margin-bottom: 26px;
+    }
+    .hero-tag-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: blink 2.5s ease-in-out infinite;
+    }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-    .hero-title { font-family: 'Instrument Serif', serif; font-size: clamp(42px, 6vw, 68px); font-weight: 400; line-height: 1.06; letter-spacing: -.02em; color: var(--navy); margin-bottom: 20px; }
+
+    .hero-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -.02em;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
     .hero-title em { font-style: italic; color: var(--blue); }
-    .hero-desc { font-size: 16px; color: var(--slate); max-width: 520px; margin: 0 auto 30px; line-height: 1.75; font-weight: 300; }
-    .btn-primary { display: inline-block; background: var(--navy); color: var(--white); font-size: 13px; font-weight: 600; letter-spacing: .06em; text-decoration: none; padding: 14px 34px; transition: background .2s, transform .15s; }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 30px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-decoration: none;
+      padding: 14px 34px;
+      transition: background .2s, transform .15s;
+    }
     .btn-primary:hover { background: var(--navy-hover); transform: translateY(-1px); }
-    .hero-stats { display: flex; justify-content: center; margin-top: 48px; border-top: 1px solid var(--border); background: var(--bg); width: 100vw; margin-left: calc(-50vw + 50%); }
-    .hs { flex: 1; padding: 18px 24px; text-align: center; border-right: 1px solid var(--border); max-width: 220px; }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+    }
+    .hs {
+      flex: 1;
+      padding: 18px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      max-width: 220px;
+    }
     .hs:last-child { border-right: none; }
-    .hs-val { font-family: 'Instrument Serif', serif; font-size: 24px; color: var(--navy); font-weight: 400; line-height: 1; }
+    .hs-val {
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px;
+      color: var(--navy);
+      font-weight: 400;
+      line-height: 1;
+    }
     .hs-val span { color: var(--blue); }
-    .hs-lbl { font-size: 10px; color: var(--slate-light); margin-top: 4px; letter-spacing: .04em; }
+    .hs-lbl {
+      font-size: 10px;
+      color: var(--slate-light);
+      margin-top: 4px;
+      letter-spacing: .04em;
+    }
+
+    /* Services */
     #services { background: var(--bg); }
-    .section-header { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 36px; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); background: var(--border); gap: 1px; }
-    .svc { background: var(--white); padding: 30px 26px; position: relative; transition: background .2s; }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      background: var(--border);
+      gap: 1px;
+    }
+    .svc {
+      background: var(--white);
+      padding: 30px 26px;
+      position: relative;
+      transition: background .2s;
+    }
     .svc:hover { background: #FDFCFB; }
     .svc:hover .svc-arr { opacity: 1; transform: translateX(0); }
-    .svc-n { font-size: 10px; font-weight: 600; letter-spacing: .16em; color: var(--blue); margin-bottom: 14px; text-transform: uppercase; }
-    .svc-title { font-family: 'Instrument Serif', serif; font-size: 19px; font-weight: 400; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
-    .svc-desc { font-size: 13px; color: var(--slate); line-height: 1.75; font-weight: 300; }
-    .svc-arr { position: absolute; bottom: 26px; right: 26px; color: var(--blue); opacity: 0; transform: translateX(-5px); transition: opacity .2s, transform .2s; font-size: 15px; }
-    .svc.ai-card { background: var(--blue-light); display: flex; flex-direction: column; justify-content: center; }
+    .svc-n {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      color: var(--blue);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .svc-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .svc-desc {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .svc-arr {
+      position: absolute;
+      bottom: 26px;
+      right: 26px;
+      color: var(--blue);
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: opacity .2s, transform .2s;
+      font-size: 15px;
+    }
+    .svc.ai-card {
+      background: var(--blue-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .svc.ai-card .svc-title { color: var(--blue); }
     .svc.ai-card .svc-desc { color: rgba(35,82,200,.6); }
+
+    /* How */
     #how { background: var(--navy); color: var(--white); }
     #how h2 { color: var(--white); }
     #how h2 em { color: #7AA3F5; }
     #how .eyebrow { color: #7AA3F5; }
-    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 36px; align-items: start; }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 36px;
+      align-items: start;
+    }
     .steps { display: flex; flex-direction: column; }
-    .step { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .step {
+      display: flex;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
     .step:last-child { border-bottom: none; }
-    .step-n { font-size: 10px; font-weight: 600; letter-spacing: .14em; color: #7AA3F5; flex-shrink: 0; padding-top: 2px; width: 20px; }
-    .step-title { font-family: 'Instrument Serif', serif; font-size: 17px; color: var(--white); margin-bottom: 5px; font-weight: 400; }
-    .step-desc { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.7; font-weight: 300; }
+    .step-n {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      color: #7AA3F5;
+      flex-shrink: 0;
+      padding-top: 2px;
+      width: 20px;
+    }
+    .step-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 17px;
+      color: var(--white);
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
     .how-panel { border: 1px solid rgba(255,255,255,.08); padding: 26px; }
-    .panel-label { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.22); margin-bottom: 18px; }
+    .panel-label {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.22);
+      margin-bottom: 18px;
+    }
     .panel-bars { display: flex; align-items: flex-end; gap: 5px; height: 80px; margin-bottom: 6px; }
-    .pb { flex: 1; background: rgba(255,255,255,.05); border-top: 2px solid rgba(122,163,245,.4); transform: scaleY(0); transform-origin: bottom; animation: riseB 1s ease-out forwards; }
+    .pb {
+      flex: 1;
+      background: rgba(255,255,255,.05);
+      border-top: 2px solid rgba(122,163,245,.4);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      animation: riseB 1s ease-out forwards;
+    }
     @keyframes riseB { to { transform: scaleY(1); } }
     .pb:nth-child(1){height:38%;animation-delay:.05s} .pb:nth-child(2){height:55%;animation-delay:.10s}
     .pb:nth-child(3){height:42%;animation-delay:.15s} .pb:nth-child(4){height:68%;animation-delay:.20s}
     .pb:nth-child(5){height:58%;animation-delay:.25s} .pb:nth-child(6){height:82%;animation-delay:.30s;background:rgba(122,163,245,.1);border-color:#7AA3F5}
     .pb:nth-child(7){height:74%;animation-delay:.35s} .pb:nth-child(8){height:94%;animation-delay:.40s;background:rgba(122,163,245,.1);border-color:#7AA3F5}
+
     .panel-blabel { font-size: 9px; color: rgba(255,255,255,.18); letter-spacing: .06em; margin-bottom: 18px; }
     .panel-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: rgba(255,255,255,.06); }
     .pm { padding: 12px; background: rgba(255,255,255,.02); }
     .pm-val { font-family: 'Instrument Serif', serif; font-size: 20px; color: #7AA3F5; font-weight: 400; }
     .pm-lbl { font-size: 10px; color: rgba(255,255,255,.22); margin-top: 3px; }
+
+    /* Clients */
     #clients { background: var(--white); }
-    .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 36px; }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 36px;
+    }
     .cc { background: var(--white); padding: 24px 20px; transition: background .2s; }
     .cc:hover { background: var(--bg); }
     .cc-icon { font-size: 17px; margin-bottom: 10px; }
     .cc-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
     .cc-desc { font-size: 12px; color: var(--slate); line-height: 1.65; font-weight: 300; }
+
+    /* Why */
     #why { background: var(--bg); }
-    .why-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; margin-top: 36px; align-items: start; }
+    .why-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      margin-top: 36px;
+      align-items: start;
+    }
     .why-points { display: flex; flex-direction: column; }
-    .wp { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .wp {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
     .wp:last-child { border-bottom: none; }
-    .wp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 6px; }
+    .wp-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
     .wp-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
     .wp-desc { font-size: 12px; color: var(--slate); line-height: 1.7; font-weight: 300; }
-    .why-callout { background: var(--navy); padding: 32px; position: sticky; top: 82px; }
-    .wc-label { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 16px; }
-    .wc-quote { font-family: 'Instrument Serif', serif; font-size: clamp(17px, 1.8vw, 21px); font-weight: 400; color: var(--white); line-height: 1.5; margin-bottom: 22px; }
+
+    .why-callout {
+      background: var(--navy);
+      padding: 32px;
+      position: sticky;
+      top: 82px;
+    }
+    .wc-label {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 16px;
+    }
+    .wc-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(17px, 1.8vw, 21px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
     .wc-quote em { color: #7AA3F5; font-style: italic; }
-    .wc-btn { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-decoration: none; color: var(--navy); background: #7AA3F5; padding: 10px 22px; transition: background .2s; }
+    .wc-btn {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-decoration: none;
+      color: var(--navy);
+      background: #7AA3F5;
+      padding: 10px 22px;
+      transition: background .2s;
+    }
     .wc-btn:hover { background: #91B3F7; }
+
+    /* Consultation */
     #consultation { background: var(--white); border-top: 1px solid var(--border); }
-    .form-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 60px; margin-top: 36px; align-items: start; }
-    .fi h3 { font-family: 'Instrument Serif', serif; font-size: 21px; font-weight: 400; color: var(--navy); margin-bottom: 10px; }
-    .fi p { font-size: 13px; color: var(--slate); line-height: 1.75; font-weight: 300; margin-bottom: 22px; }
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 60px;
+      margin-top: 36px;
+      align-items: start;
+    }
+    .fi h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .fi p {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
     .crow { display: flex; gap: 10px; margin-bottom: 11px; align-items: flex-start; }
-    .cicon { width: 28px; height: 28px; flex-shrink: 0; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .cicon {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
     .ctext { font-size: 12px; color: var(--slate); font-weight: 300; line-height: 1.45; }
-    .ctext strong { color: var(--navy); font-weight: 600; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; display: block; }
+    .ctext strong {
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      display: block;
+    }
     .ctext a { color: var(--blue); text-decoration: none; }
+
     .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 13px; }
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
-    input, textarea, select { border: 1px solid var(--border-dark); background: var(--bg); color: var(--navy); font-family: 'Figtree', sans-serif; font-size: 13px; font-weight: 400; padding: 10px 12px; outline: none; width: 100%; transition: border-color .2s, background .2s; appearance: none; border-radius: 0; }
+    label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+    input, textarea, select {
+      border: 1px solid var(--border-dark);
+      background: var(--bg);
+      color: var(--navy);
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 10px 12px;
+      outline: none;
+      width: 100%;
+      transition: border-color .2s, background .2s;
+      appearance: none;
+      border-radius: 0;
+    }
     input::placeholder, textarea::placeholder { color: var(--slate-light); }
     input:focus, textarea:focus, select:focus { border-color: var(--blue); background: var(--white); }
+
     textarea { resize: vertical; min-height: 88px; }
     select option { background: var(--white); }
-    .btn-submit { width: 100%; padding: 13px; background: var(--navy); color: var(--white); font-family: 'Figtree', sans-serif; font-size: 12px; letter-spacing: .1em; font-weight: 600; text-transform: uppercase; border: none; cursor: pointer; transition: background .2s; margin-top: 4px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      letter-spacing: .1em;
+      font-weight: 600;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+      margin-top: 4px;
+    }
     .btn-submit:hover { background: var(--navy-hover); }
+
     .form-note { font-size: 11px; color: var(--slate-light); text-align: center; margin-top: 10px; }
-    footer { background: var(--navy); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
     footer img { height: 26px; filter: brightness(0) invert(1); opacity: .6; display: block; }
     .fc { font-size: 11px; color: rgba(255,255,255,.25); font-weight: 300; }
     .fe { font-size: 11px; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
     .fe:hover { color: #7AA3F5; }
+
+    /* Reveal animation */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
+
     @media (max-width: 960px) {
-      section { padding: 52px 24px; } nav { padding: 0 24px; } .nav-links { display: none; }
+      section { padding: 52px 24px; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
       .section-header, .how-grid, .why-layout, .form-layout { grid-template-columns: 1fr; gap: 28px; }
-      .services-grid { grid-template-columns: 1fr 1fr; } .clients-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 20px 24px; } .hero-inner { padding: 0 24px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 20px 24px; }
+      .hero-inner { padding: 0 24px; }
     }
     @media (max-width: 580px) {
       .services-grid, .clients-grid { grid-template-columns: 1fr; }
-      .frow { grid-template-columns: 1fr; } .hero-stats { display: none; }
+      .frow { grid-template-columns: 1fr; }
+      .hero-stats { display: none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { transition: none; }
+      .pb { animation: none; transform: scaleY(1); }
+      .hero-tag-dot { animation: none; }
     }
   </style>
 </head>
+
 <body>
+  <nav id="navbar" aria-label="Primary navigation">
+    <a class="nav-logo" href="#" aria-label="FirmNest Group home">
+      <img src="firmnest-logo.png" alt="FirmNest Group" />
+    </a>
 
-<nav id="navbar">
-  <a href="#"><img src="firmnest-logo.png" alt="FirmNest Group" /></a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#how">How We Work</a></li>
-    <li><a href="#clients">Clients</a></li>
-    <li><a href="#why">Why FirmNest</a></li>
-  </ul>
-  <a href="#consultation" class="nav-cta">Book Consultation</a>
-</nav>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How We Work</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#why">Why FirmNest</a></li>
+    </ul>
 
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-tag reveal"><span class="hero-tag-dot"></span>AI-Powered Finance Advisory</div>
-    <h1 class="hero-title reveal" style="transition-delay:.08s">Finance That<br><em>Thinks Faster.</em></h1>
-    <p class="hero-desc reveal" style="transition-delay:.16s">FirmNest Group brings AI-powered finance and operations expertise to founder-led and growth-stage businesses. Structured thinking, cleaner decisions, faster outcomes.</p>
-    <a href="#consultation" class="btn-primary reveal" style="transition-delay:.24s">Book a Consultation</a>
-  </div>
-  <div class="hero-stats reveal" style="transition-delay:.32s">
-    <div class="hs"><div class="hs-val">AI<span>+</span>Human</div><div class="hs-lbl">Delivery Model</div></div>
-    <div class="hs"><div class="hs-val">5<span>x</span></div><div class="hs-lbl">Faster Reporting</div></div>
-    <div class="hs"><div class="hs-val">£1M<span>+</span></div><div class="hs-lbl">Revenue Range</div></div>
-    <div class="hs"><div class="hs-val">UK<span> Based</span></div><div class="hs-lbl">London, England</div></div>
-  </div>
-</section>
+    <a href="#consultation" class="nav-cta">Book Consultation</a>
+  </nav>
 
-<section id="services">
-  <div class="section-header">
-    <div><div class="eyebrow reveal">What We Do</div><h2 class="reveal" style="transition-delay:.07s">Five Practices.<br><em>One Standard.</em></h2></div>
-    <p class="lead reveal" style="transition-delay:.12s">Every engagement is built around a specific outcome. AI delivers faster, with more precision, at a fraction of the traditional cost.</p>
-  </div>
-  <div class="services-grid">
-    <div class="svc reveal"><div class="svc-n">01</div><div class="svc-title">FP&amp;A Assistance</div><p class="svc-desc">AI-assisted forecasting, scenario modelling, and board-ready reporting that gives leadership real clarity without the manual overhead.</p><div class="svc-arr">&#8594;</div></div>
-    <div class="svc reveal" style="transition-delay:.07s"><div class="svc-n">02</div><div class="svc-title">Operational Finance</div><p class="svc-desc">We map your financial operations, identify what is costing you margin, and automate the workflows that should never be manual.</p><div class="svc-arr">&#8594;</div></div>
-    <div class="svc reveal" style="transition-delay:.14s"><div class="svc-n">03</div><div class="svc-title">Fundraising &amp; VC Readiness</div><p class="svc-desc">Investor-grade financial models, data room preparation, and the commercial narrative that gives you the best chance in front of capital.</p><div class="svc-arr">&#8594;</div></div>
-    <div class="svc reveal" style="transition-delay:.21s"><div class="svc-n">04</div><div class="svc-title">Taxation Assistance</div><p class="svc-desc">Tax strategy that is commercial, not just compliant. We work alongside your accountants to integrate tax planning into your wider financial picture.</p><div class="svc-arr">&#8594;</div></div>
-    <div class="svc reveal" style="transition-delay:.28s"><div class="svc-n">05</div><div class="svc-title">Founder Advisory</div><p class="svc-desc">A fractional CFO and strategic finance partner for founders who need senior commercial thinking without the full-time cost.</p><div class="svc-arr">&#8594;</div></div>
-    <div class="svc ai-card reveal" style="transition-delay:.35s"><div class="svc-n">AI+</div><div class="svc-title">AI at Every Layer</div><p class="svc-desc">Every service is delivered with AI-enabled speed. Faster analysis, smarter models, real-time intelligence your business can act on.</p></div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="eyebrow reveal">Our Approach</div>
-  <h2 class="reveal" style="transition-delay:.07s">Human Expertise,<br><em>AI Speed.</em></h2>
-  <div class="how-grid">
-    <div class="steps reveal" style="transition-delay:.1s">
-      <div class="step"><div class="step-n">01</div><div><div class="step-title">Rapid Commercial Diagnosis</div><p class="step-desc">We learn your model, your margins, and your gaps quickly. No lengthy onboarding, no wasted time.</p></div></div>
-      <div class="step"><div class="step-n">02</div><div><div class="step-title">AI-Accelerated Delivery</div><p class="step-desc">We compress what used to take weeks into days using intelligent automation and AI-powered modelling.</p></div></div>
-      <div class="step"><div class="step-n">03</div><div><div class="step-title">Senior Oversight Always</div><p class="step-desc">AI does the heavy lifting. Experienced finance professionals own every output and every recommendation.</p></div></div>
-      <div class="step"><div class="step-n">04</div><div><div class="step-title">Outcomes Not Hours</div><p class="step-desc">We measure ourselves in margin improved, decisions made with clarity, and capital raised.</p></div></div>
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-tag reveal"><span class="hero-tag-dot"></span>AI-Powered Finance Advisory</div>
+      <h1 class="hero-title reveal" style="transition-delay:.08s">Finance That<br><em>Thinks Faster.</em></h1>
+      <p class="hero-desc reveal" style="transition-delay:.16s">
+        FirmNest Group brings AI-powered finance and operations expertise to founder-led and growth-stage businesses.
+        Structured thinking, cleaner decisions, faster outcomes.
+      </p>
+      <a href="#consultation" class="btn-primary reveal" style="transition-delay:.24s">Book a Consultation</a>
     </div>
-    <div class="how-panel reveal" style="transition-delay:.18s">
-      <div class="panel-label">Performance trajectory — illustrative</div>
-      <div class="panel-bars"><div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div></div>
-      <div class="panel-blabel">Monthly trend post-engagement</div>
-      <div class="panel-metrics">
-        <div class="pm"><div class="pm-val">+18%</div><div class="pm-lbl">Gross Margin</div></div>
-        <div class="pm"><div class="pm-val">60%</div><div class="pm-lbl">Less Reporting Time</div></div>
-        <div class="pm"><div class="pm-val">3x</div><div class="pm-lbl">Forecast Accuracy</div></div>
+
+    <div class="hero-stats reveal" style="transition-delay:.32s" aria-label="Key highlights">
+      <div class="hs"><div class="hs-val">AI<span>+</span>Human</div><div class="hs-lbl">Delivery Model</div></div>
+      <div class="hs"><div class="hs-val">5<span>x</span></div><div class="hs-lbl">Faster Reporting</div></div>
+      <div class="hs"><div class="hs-val">£1M<span>+</span></div><div class="hs-lbl">Revenue Range</div></div>
+      <div class="hs"><div class="hs-val">UK<span> Based</span></div><div class="hs-lbl">London, England</div></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-header">
+      <div>
+        <div class="eyebrow reveal">What We Do</div>
+        <h2 class="reveal" style="transition-delay:.07s">Five Practices.<br><em>One Standard.</em></h2>
+      </div>
+      <p class="lead reveal" style="transition-delay:.12s">
+        Every engagement is built around a specific outcome. AI delivers faster, with more precision, at a fraction of the traditional cost.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="svc reveal">
+        <div class="svc-n">01</div>
+        <div class="svc-title">FP&amp;A Assistance</div>
+        <p class="svc-desc">AI-assisted forecasting, scenario modelling, and board-ready reporting that gives leadership real clarity without the manual overhead.</p>
+        <div class="svc-arr">&#8594;</div>
+      </div>
+
+      <div class="svc reveal" style="transition-delay:.07s">
+        <div class="svc-n">02</div>
+        <div class="svc-title">Operational Finance</div>
+        <p class="svc-desc">We map your financial operations, identify what is costing you margin, and automate the workflows that should never be manual.</p>
+        <div class="svc-arr">&#8594;</div>
+      </div>
+
+      <div class="svc reveal" style="transition-delay:.14s">
+        <div class="svc-n">03</div>
+        <div class="svc-title">Fundraising &amp; VC Readiness</div>
+        <p class="svc-desc">Investor-grade financial models, data room preparation, and the commercial narrative that gives you the best chance in front of capital.</p>
+        <div class="svc-arr">&#8594;</div>
+      </div>
+
+      <div class="svc reveal" style="transition-delay:.21s">
+        <div class="svc-n">04</div>
+        <div class="svc-title">Tax &amp; Compliance Support</div>
+        <p class="svc-desc">Planning support and coordination with your qualified accountants and tax advisers so tax decisions align with your commercial reality.</p>
+        <div class="svc-arr">&#8594;</div>
+      </div>
+
+      <div class="svc reveal" style="transition-delay:.28s">
+        <div class="svc-n">05</div>
+        <div class="svc-title">Founder Advisory</div>
+        <p class="svc-desc">A fractional CFO and strategic finance partner for founders who need senior commercial thinking without the full-time cost.</p>
+        <div class="svc-arr">&#8594;</div>
+      </div>
+
+      <div class="svc ai-card reveal" style="transition-delay:.35s">
+        <div class="svc-n">AI+</div>
+        <div class="svc-title">AI at Every Layer</div>
+        <p class="svc-desc">Every service is delivered with AI-enabled speed. Faster analysis, smarter models, real-time intelligence your business can act on.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="clients">
-  <div class="eyebrow reveal">Who We Work With</div>
-  <h2 class="reveal" style="transition-delay:.07s">Built for Businesses<br><em>That Mean It.</em></h2>
-  <div class="clients-grid">
-    <div class="cc reveal"><div class="cc-icon">&#128200;</div><div class="cc-title">Growth-Stage Companies</div><p class="cc-desc">£1M to £20M revenue. Scaling fast but financial processes have not kept pace.</p></div>
-    <div class="cc reveal" style="transition-delay:.07s"><div class="cc-icon">&#129504;</div><div class="cc-title">Founder-Led Businesses</div><p class="cc-desc">The founder is the CFO. Senior financial thinking without the full-time overhead.</p></div>
-    <div class="cc reveal" style="transition-delay:.14s"><div class="cc-icon">&#127919;</div><div class="cc-title">Investment-Ready</div><p class="cc-desc">Preparing for a raise or exit. Investor-grade financials and a clean data room.</p></div>
-    <div class="cc reveal" style="transition-delay:.21s"><div class="cc-icon">&#9881;</div><div class="cc-title">Operational Turnarounds</div><p class="cc-desc">Margins compressing and costs unclear. Rapid diagnosis and an executable plan.</p></div>
-  </div>
-</section>
+  <section id="how">
+    <div class="eyebrow reveal">Our Approach</div>
+    <h2 class="reveal" style="transition-delay:.07s">Human Expertise,<br><em>AI Speed.</em></h2>
 
-<section id="why">
-  <div class="eyebrow reveal">Why FirmNest</div>
-  <h2 class="reveal" style="transition-delay:.07s">We Are Not a Firm.<br><em>We Are a Standard.</em></h2>
-  <div class="why-layout">
-    <div class="why-points reveal" style="transition-delay:.1s">
-      <div class="wp"><div class="wp-dot"></div><div><div class="wp-title">AI-Native Delivery</div><p class="wp-desc">Not AI bolted on. Our entire delivery model is built around intelligent automation from the ground up.</p></div></div>
-      <div class="wp"><div class="wp-dot"></div><div><div class="wp-title">Senior Expertise Direct</div><p class="wp-desc">You work directly with experienced finance professionals. No junior analysts, no account managers in the middle.</p></div></div>
-      <div class="wp"><div class="wp-dot"></div><div><div class="wp-title">Commercial Thinking First</div><p class="wp-desc">Every recommendation passes one filter — does this make the business more profitable, more scalable, or more fundable?</p></div></div>
-      <div class="wp"><div class="wp-dot"></div><div><div class="wp-title">Conflict-Free</div><p class="wp-desc">No audit. No competing interests. Our only incentive is your commercial outcome.</p></div></div>
-      <div class="wp"><div class="wp-dot"></div><div><div class="wp-title">Fast to Deploy</div><p class="wp-desc">We embed quickly, learn your model fast, and deliver value within the first engagement.</p></div></div>
-    </div>
-    <div class="why-callout reveal" style="transition-delay:.18s">
-      <div class="wc-label">Our Position</div>
-      <div class="wc-quote">"We are the <em>senior finance team you would hire full-time</em> if you could justify the cost yet. Except we bring AI to every engagement."</div>
-      <a href="#consultation" class="wc-btn">Book a Consultation</a>
-    </div>
-  </div>
-</section>
-
-<section id="consultation">
-  <div class="eyebrow reveal">Get in Touch</div>
-  <h2 class="reveal" style="transition-delay:.07s">Book a Free<br><em>Consultation.</em></h2>
-  <div class="form-layout">
-    <div class="fi reveal">
-      <h3>Let's talk about your business.</h3>
-      <p>Whether you are navigating a fundraise, trying to understand your margins, or wanting financial infrastructure that scales, tell us about it. The first conversation is always free and confidential.</p>
-      <div class="crow"><div class="cicon">&#9993;</div><div class="ctext"><strong>Email</strong><a href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a></div></div>
-      <div class="crow"><div class="cicon">&#128205;</div><div class="ctext"><strong>Location</strong>London, United Kingdom</div></div>
-      <div class="crow"><div class="cicon">&#8987;</div><div class="ctext"><strong>Response</strong>Within 1 business day</div></div>
-    </div>
-    <div class="reveal" style="transition-delay:.14s">
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="frow">
-          <div class="fg"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="James Hargreaves" required /></div>
-          <div class="fg"><label for="company">Company</label><input type="text" id="company" name="company" placeholder="Hargreaves Ltd" required /></div>
+    <div class="how-grid">
+      <div class="steps reveal" style="transition-delay:.1s">
+        <div class="step">
+          <div class="step-n">01</div>
+          <div>
+            <div class="step-title">Rapid Commercial Diagnosis</div>
+            <p class="step-desc">We learn your model, your margins, and your gaps quickly. No lengthy onboarding, no wasted time.</p>
+          </div>
         </div>
-        <div class="frow">
-          <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="james@company.co.uk" required /></div>
-          <div class="fg"><label for="service">Service Interest</label><select id="service" name="service"><option value="" disabled selected>Select...</option><option>FP&amp;A Assistance</option><option>Operational Finance</option><option>Fundraising &amp; VC Readiness</option><option>Taxation Assistance</option><option>Founder Advisory</option><option>Not sure yet</option></select></div>
+
+        <div class="step">
+          <div class="step-n">02</div>
+          <div>
+            <div class="step-title">AI-Accelerated Delivery</div>
+            <p class="step-desc">We compress what used to take weeks into days using intelligent automation and AI-powered modelling.</p>
+          </div>
         </div>
-        <div class="fg"><label for="message">What Are You Working Through?</label><textarea id="message" name="message" placeholder="Tell us about your business and the challenge you are facing." required></textarea></div>
-        <input type="text" name="_gotcha" style="display:none" />
-        <button type="submit" class="btn-submit">Send Enquiry</button>
-        <p class="form-note">All enquiries are confidential. We respond within 1 business day.</p>
-      </form>
+
+        <div class="step">
+          <div class="step-n">03</div>
+          <div>
+            <div class="step-title">Senior Oversight Always</div>
+            <p class="step-desc">AI does the heavy lifting. Experienced finance professionals own every output and every recommendation.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-n">04</div>
+          <div>
+            <div class="step-title">Outcomes Not Hours</div>
+            <p class="step-desc">We measure ourselves in margin improved, decisions made with clarity, and capital raised.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-panel reveal" style="transition-delay:.18s">
+        <div class="panel-label">Performance trajectory — illustrative</div>
+        <div class="panel-bars" aria-hidden="true">
+          <div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div>
+          <div class="pb"></div><div class="pb"></div><div class="pb"></div><div class="pb"></div>
+        </div>
+        <div class="panel-blabel">Monthly trend post-engagement</div>
+        <div class="panel-metrics">
+          <div class="pm"><div class="pm-val">+18%</div><div class="pm-lbl">Gross Margin</div></div>
+          <div class="pm"><div class="pm-val">60%</div><div class="pm-lbl">Less Reporting Time</div></div>
+          <div class="pm"><div class="pm-val">3x</div><div class="pm-lbl">Forecast Accuracy</div></div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <img src="firmnest-logo.png" alt="FirmNest Group" />
-  <p class="fc">2026 FirmNest Group Ltd. All rights reserved. Registered in England and Wales.</p>
-  <a href="mailto:info@firmnestgroup.co.uk" class="fe">info@firmnestgroup.co.uk</a>
-</footer>
+  <section id="clients">
+    <div class="eyebrow reveal">Who We Work With</div>
+    <h2 class="reveal" style="transition-delay:.07s">Built for Businesses<br><em>That Mean It.</em></h2>
 
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 36); });
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } });
-  });
-</script>
+    <div class="clients-grid">
+      <div class="cc reveal">
+        <div class="cc-icon">&#128200;</div>
+        <div class="cc-title">Growth-Stage Companies</div>
+        <p class="cc-desc">£1M to £20M revenue. Scaling fast but financial processes have not kept pace.</p>
+      </div>
+
+      <div class="cc reveal" style="transition-delay:.07s">
+        <div class="cc-icon">&#129504;</div>
+        <div class="cc-title">Founder-Led Businesses</div>
+        <p class="cc-desc">The founder is the CFO. Senior financial thinking without the full-time overhead.</p>
+      </div>
+
+      <div class="cc reveal" style="transition-delay:.14s">
+        <div class="cc-icon">&#127919;</div>
+        <div class="cc-title">Investment-Ready</div>
+        <p class="cc-desc">Preparing for a raise or exit. Investor-grade financials and a clean data room.</p>
+      </div>
+
+      <div class="cc reveal" style="transition-delay:.21s">
+        <div class="cc-icon">&#9881;</div>
+        <div class="cc-title">Operational Turnarounds</div>
+        <p class="cc-desc">Margins compressing and costs unclear. Rapid diagnosis and an executable plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="eyebrow reveal">Why FirmNest</div>
+    <h2 class="reveal" style="transition-delay:.07s">We Are Not a Firm.<br><em>We Are a Standard.</em></h2>
+
+    <div class="why-layout">
+      <div class="why-points reveal" style="transition-delay:.1s">
+        <div class="wp">
+          <div class="wp-dot"></div>
+          <div>
+            <div class="wp-title">AI-Native Delivery</div>
+            <p class="wp-desc">Not AI bolted on. Our delivery model is built around intelligent automation from the ground up.</p>
+          </div>
+        </div>
+
+        <div class="wp">
+          <div class="wp-dot"></div>
+          <div>
+            <div class="wp-title">Senior Expertise Direct</div>
+            <p class="wp-desc">You work directly with experienced finance professionals. No junior layers, no account managers in the middle.</p>
+          </div>
+        </div>
+
+        <div class="wp">
+          <div class="wp-dot"></div>
+          <div>
+            <div class="wp-title">Commercial Thinking First</div>
+            <p class="wp-desc">Every recommendation passes one filter: does this make the business more profitable, more scalable, or more fundable?</p>
+          </div>
+        </div>
+
+        <div class="wp">
+          <div class="wp-dot"></div>
+          <div>
+            <div class="wp-title">Conflict-Free</div>
+            <p class="wp-desc">No audit. No competing interests. Our only incentive is your commercial outcome.</p>
+          </div>
+        </div>
+
+        <div class="wp">
+          <div class="wp-dot"></div>
+          <div>
+            <div class="wp-title">Fast to Deploy</div>
+            <p class="wp-desc">We embed quickly, learn your model fast, and deliver value within the first engagement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-callout reveal" style="transition-delay:.18s">
+        <div class="wc-label">Our Position</div>
+        <div class="wc-quote">We are the <em>senior finance team you would hire full-time</em> if you could justify the cost yet. Except we bring AI to every engagement.</div>
+        <a href="#consultation" class="wc-btn">Book a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="consultation">
+    <div class="eyebrow reveal">Get in Touch</div>
+    <h2 class="reveal" style="transition-delay:.07s">Book a Free<br><em>Consultation.</em></h2>
+
+    <div class="form-layout">
+      <div class="fi reveal">
+        <h3>Let's talk about your business.</h3>
+        <p>
+          Whether you are navigating a fundraise, trying to understand your margins, or wanting financial infrastructure that scales,
+          tell us about it. The first conversation is free and confidential.
+        </p>
+
+        <div class="crow">
+          <div class="cicon">&#9993;</div>
+          <div class="ctext"><strong>Email</strong><a href="mailto:info@firmnestgroup.co.uk">info@firmnestgroup.co.uk</a></div>
+        </div>
+        <div class="crow">
+          <div class="cicon">&#128205;</div>
+          <div class="ctext"><strong>Location</strong>London, United Kingdom</div>
+        </div>
+        <div class="crow">
+          <div class="cicon">&#8987;</div>
+          <div class="ctext"><strong>Response</strong>Within 1 business day</div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.14s">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="frow">
+            <div class="fg">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="James Hargreaves" required />
+            </div>
+            <div class="fg">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Hargreaves Ltd" required />
+            </div>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="james@company.co.uk" required />
+            </div>
+            <div class="fg">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Select...</option>
+                <option>FP&amp;A Assistance</option>
+                <option>Operational Finance</option>
+                <option>Fundraising &amp; VC Readiness</option>
+                <option>Tax &amp; Compliance Support</option>
+                <option>Founder Advisory</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="message">What Are You Working Through?</label>
+            <textarea id="message" name="message" placeholder="Tell us about your business and the challenge you are facing." required></textarea>
+          </div>
+
+          <input type="text" name="_gotcha" style="display:none" />
+          <button type="submit" class="btn-submit">Send Enquiry</button>
+          <p class="form-note">All enquiries are confidential. We respond within 1 business day.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="firmnest-logo.png" alt="FirmNest Group" />
+    <p class="fc">2026 FirmNest Group Ltd. All rights reserved. Registered in England and Wales.</p>
+    <a href="mailto:info@firmnestgroup.co.uk" class="fe">info@firmnestgroup.co.uk</a>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 36);
+    });
+
+    // Safe smooth anchor scrolling (doesn't break href="#")
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (!href || href === '#') return;
+        const t = document.querySelector(href);
+        if (t) {
+          e.preventDefault();
+          t.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
